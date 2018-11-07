@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - VietnameseTokenizer",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "org.apache.lucene.analysis.vi.v5.VietnameseTokenizer",
+            "args": "",
+            "projectName": "elasticsearch-analysis-vietnamese"
+        }
+    ]
+}

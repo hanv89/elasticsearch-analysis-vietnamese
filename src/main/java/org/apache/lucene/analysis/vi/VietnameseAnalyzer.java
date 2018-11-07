@@ -15,6 +15,7 @@
 package org.apache.lucene.analysis.vi;
 
 import org.apache.lucene.analysis.*;
+import org.apache.lucene.analysis.vi.v5.VietnameseTokenizer;
 
 import java.util.Arrays;
 import java.util.List;
