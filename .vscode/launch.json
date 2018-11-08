@@ -2,6 +2,17 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Tokenizer",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "ai.vitk.tok.Tokenizer",
+            "args": "",
+            "projectName": "elasticsearch-analysis-vietnamese"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - VietnameseTokenizer",
             "request": "launch",
             "cwd": "${workspaceFolder}",

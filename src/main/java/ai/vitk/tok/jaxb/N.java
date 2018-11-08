@@ -11,12 +11,11 @@ package ai.vitk.tok.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 
 /**
@@ -39,16 +38,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "n"
-})
-@XmlRootElement(name = "n")
+// @AccessorType(XmlAccessType.FIELD)
+// @Type(name = "", propOrder = {
+//     "n"
+// })
+@Root(name="n")
 public class N {
 
-    @XmlElement(required = true)
+    @ElementList(type=N.class)
     protected List<N> n;
-    @XmlAttribute(name = "c")
+    @Attribute
     protected String c;
 
     /**

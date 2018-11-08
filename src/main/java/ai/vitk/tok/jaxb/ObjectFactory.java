@@ -10,7 +10,7 @@ package ai.vitk.tok.jaxb;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRegistry;
+// import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * provided in this class.
  * 
  */
-@XmlRegistry
+// @XmlRegistry
 public class ObjectFactory implements Serializable {
 	
 	private static final long serialVersionUID = 2003050820306878713L;

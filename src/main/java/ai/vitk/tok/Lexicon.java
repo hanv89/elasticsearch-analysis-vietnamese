@@ -3,10 +3,10 @@ package ai.vitk.tok;
 import ai.vitk.tok.jaxb.N;
 import ai.vitk.tok.jaxb.ObjectFactory;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+import org.simpleframework.xml.strategy.TreeStrategy;
+
 import java.io.*;
 import java.util.LinkedList;
 
@@ -154,15 +154,15 @@ public class Lexicon implements Serializable {
 
   public Lexicon load(InputStream inputStream) {
     try {
-      JAXBContext context = JAXBContext.newInstance("ai.vitk.tok.jaxb.N");
-      Unmarshaller unmarshaller = context.createUnmarshaller();
-      Object object = unmarshaller.unmarshal(inputStream);
+      TreeStrategy strategy = new TreeStrategy();
+      Serializer serializer = new Persister(strategy);
+      N object = serializer.read(N.class, inputStream);
       if (object instanceof N) {
         N n = (N) object;
         root = loadNode(n);
         return this;
       }
-    } catch (JAXBException e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return null;
@@ -186,18 +186,12 @@ public class Lexicon implements Serializable {
   public void save(String fileName) {
     try {
       // create a marshaller
-      JAXBContext context = JAXBContext.newInstance("ai.vitk.tok.jaxb.N");
-      Marshaller marshaller = context.createMarshaller();
-      marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-      // marshal the lexicon
-      try {
-        OutputStream os = new FileOutputStream(fileName);
-        marshaller.marshal(createN(root), os);
-        os.close();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (JAXBException e) {
+
+      Serializer serializer = new Persister();
+      File result = new File(fileName);
+
+      serializer.write(createN(root), result);
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
